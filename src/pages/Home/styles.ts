@@ -87,7 +87,7 @@ const Separator = styled.div`
   justify-content: center;
 `
 
-const StartCountdownButton = styled.button`
+const BaseCountdownButton = styled.button`
   width: 100%;
   border: none;
   padding: 1rem;
@@ -100,18 +100,29 @@ const StartCountdownButton = styled.button`
   gap: 0.5rem;
   font-weight: bold;
 
-  cursor: pointer;
-
-  background: ${({ theme }) => theme['green-500']};
   color: ${({ theme }) => theme['gray-100']};
+
+  cursor: pointer;
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
+`
+
+const StartCountdownButton = styled(BaseCountdownButton)`
+  background: ${({ theme }) => theme['green-500']};
 
   &:not(:disabled):hover {
     background: ${({ theme }) => theme['green-700']};
+  }
+`
+
+const StopCountdownButton = styled(BaseCountdownButton)`
+  background: ${({ theme }) => theme['red-500']};
+
+  &:not(:disabled):hover {
+    background: ${({ theme }) => theme['red-700']};
   }
 `
 
@@ -122,5 +133,6 @@ export {
   MinutesAmountInput,
   Separator,
   StartCountdownButton,
+  StopCountdownButton,
   TaskInput,
 }
