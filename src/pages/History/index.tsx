@@ -24,12 +24,12 @@ export function History() {
           </thead>
 
           <tbody>
-            {cycles.map((cycle) => (
+            {cycles.toReversed().map((cycle) => (
               <tr key={cycle.id}>
                 <td>{cycle.task}</td>
                 <td>{cycle.minutesAmount} minutos</td>
                 <td>
-                  {formatDistanceToNow(cycle.startDate, {
+                  {formatDistanceToNow(new Date(cycle.startDate), {
                     locale: ptBR,
                     addSuffix: true,
                   })}
